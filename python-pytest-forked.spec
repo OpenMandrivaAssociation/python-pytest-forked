@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.3.0
-Release:        1
+Release:        2
 Summary:        run tests in isolated forked subprocesses
 Group:          Development/Python
 License:        MIT
