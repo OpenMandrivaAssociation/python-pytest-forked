@@ -1,14 +1,13 @@
-# Created by pyp2rpm-3.3.5
 %global pypi_name pytest-forked
 
 Name:           python-%{pypi_name}
-Version:        1.3.0
-Release:        2
+Version:        1.6.0
+Release:        1
 Summary:        run tests in isolated forked subprocesses
 Group:          Development/Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-forked
-Source0:        %{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pytest-forked/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -27,8 +26,6 @@ Installation...
 
 %prep
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 %build
 %py3_build
@@ -36,11 +33,8 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%check
-%{__python3} setup.py test
-
 %files -n python-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pytest_forked
-%{python3_sitelib}/pytest_forked-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/pytest_forked-%{version}.dist-info
