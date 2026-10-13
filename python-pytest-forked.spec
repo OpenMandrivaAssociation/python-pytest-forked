@@ -2,30 +2,30 @@
 %define oname pytest_forked
 
 Name:           python-%{module}
-Version:        1.6.0
-Release:        3
+Version:        1.7.5
+Release:        1
 Summary:        run tests in isolated forked subprocesses
 Group:          Development/Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-forked
-Source0:        https://files.pythonhosted.org/packages/source/p/pytest-forked/%{module}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pytest-forked/%{oname}-%{version}.tar.gz
 BuildSystem:	python
 BuildArch:      noarch
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:  python%{pyver}dist(py)
-BuildRequires:  python%{pyver}dist(pytest) >= 3.10
+BuildRequires:  python%{pyver}dist(pytest) >= 7
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:  python%{pyver}dist(setuptools-scm)
 BuildRequires:	python%{pyver}dist(wheel)
 
+%build -p
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
+
 %description
-pytest-forked: run each test in a forked subprocess .. warning:: this is a
-extraction of the xdist --forked module, future maintenance beyond the bare
-minimum is not planned until a new maintainer is found. This plugin **does not
-work on Windows** because there's no fork support. * --forked: run each test in
-a forked subprocess to survive SEGFAULTS or otherwise dying processes.
-Installation...
+Run each test in a forked subprocess so a crash does not kill the
+rest of the suite. This is the former pytest-xdist --forked plugin.
+It does not work on Windows.
 
 
 %files
